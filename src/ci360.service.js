@@ -623,9 +623,9 @@ class CI360Viewer {
   }
 
   onMoveHandler(event) {
-    const currentPositionX = this.isMobile ? event.touches[0].clientX : event.pageX;
-    const currentPositionY = this.isMobile ? event.touches[0].clientY : event.pageY;
-
+    const currentPositionX = event.touches && event.touches.length > 0 ? event.touches[0].clientX : event.pageX;
+    const currentPositionY = event.touches && event.touches.length > 0 ? event.touches[0].clientY : event.pageY;
+   
     const isMoveRight = currentPositionX - this.movementStart.x >= this.speedFactor;
     const isMoveLeft = this.movementStart.x - currentPositionX >= this.speedFactor;
     const isMoveTop = this.movementStart.y - currentPositionY >= this.speedFactor;
